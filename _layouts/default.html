@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ page.description | default: site.description | escape }}">
   <title>{{ page.title | escape }} · {{ site.title | escape }}</title>
-  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}?v=markdown">
+  <meta name="color-scheme" content="light dark">
+  <script src="{{ '/theme.js' | relative_url }}"></script>
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}?v=snow-lake">
 </head>
 <body>
   <header class="site-header">
@@ -13,6 +15,11 @@
       <a class="brand" href="{{ '/' | relative_url }}"><span class="brand-mark" aria-hidden="true">P</span> {{ site.title | escape }}</a>
       <nav class="site-nav" aria-label="主导航">
         <a href="{{ '/' | relative_url }}#articles">文章</a>
+        <select id="site-theme" aria-label="网页皮肤" hidden>
+          <option value="system">跟随系统</option>
+          <option value="light">浅色</option>
+          <option value="dark">深色</option>
+        </select>
       </nav>
     </div>
   </header>
