@@ -1,22 +1,7 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Patrick 的游戏开发博客，记录技术实践与项目复盘。">
-  <title>学习手记 · 博客</title>
-  <link rel="stylesheet" href="style.css?v=devlog">
-</head>
-<body>
-  <header class="site-header">
-    <div class="shell">
-      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">P</span> 学习手记</a>
-      <nav class="site-nav" aria-label="主导航">
-        <a href="#articles" aria-current="page">文章</a>
-      </nav>
-    </div>
-  </header>
-
+---
+layout: default
+title: 博客
+---
   <main>
     <section class="hero">
       <div class="shell hero-inner">
@@ -29,22 +14,20 @@
 
     <section class="shell articles" id="articles" aria-labelledby="articles-title">
       <h2 id="articles-title">最新文章</h2>
+      {% for post in site.posts %}
       <article class="entry-card">
-        <a href="first-post.html" class="entry-link">
+        <a href="{{ post.url | relative_url }}" class="entry-link">
           <div class="entry-art" aria-hidden="true"><span>&gt;_</span></div>
           <div class="entry-content">
-            <span class="entry-tag">学习方法</span>
-            <h3>为什么开始写学习手记</h3>
-            <p>用三行记录留下问题、尝试和结果，给下次遇到同类问题的自己一个起点。</p>
+            {% assign category = post.categories | first %}
+            {% if category %}<span class="entry-tag">{{ category | escape }}</span>{% endif %}
+            <h3>{{ post.title | escape }}</h3>
+            {% assign summary = post.description | default: post.excerpt %}
+            {% if summary %}<p>{{ summary | strip_html | truncate: 120 | escape }}</p>{% endif %}
           </div>
           <span class="entry-arrow" aria-hidden="true">↗</span>
         </a>
       </article>
+      {% endfor %}
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="shell"><span>学习手记</span><a href="https://github.com/PatrickZhu0">GitHub <span aria-hidden="true">↗</span></a></div>
-  </footer>
-</body>
-</html>

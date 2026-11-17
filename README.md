@@ -2,8 +2,20 @@
 
 一个由 GitHub Pages 托管的中文游戏开发博客。
 
-- `index.html` 是博客首页，包含文章列表。
-- `blog.html` 会跳转到博客首页，旧链接仍可使用。
-- `style.css` 为所有页面提供样式。
+## 发布 Markdown 文章
 
-发布新文章时，复制现有文章页面，更新标题、简介和正文，再把新页面链接加入 `index.html` 的文章列表。提交到 `main` 后，GitHub Pages 会自动部署。也可以在浏览器中直接打开 `index.html` 预览本地文件。
+在 `_posts` 目录创建 `YYYY-MM-DD-文章英文短名.md`。文件名中的日期用实际发布日期，短名可用小写英文和连字符。文件开头写标题，下面写 Markdown 正文。
+
+```markdown
+---
+title: "我的游戏开发笔记"
+description: "这篇文章的简短介绍。"
+category: "Unity"
+---
+
+## 遇到的问题
+
+在这里写正文。
+```
+
+`title` 是标题，`description` 和 `category` 可按需填写。提交到 `main` 后，GitHub Pages 会生成文章页，首页自动按日期列出文章。公开仓库的 `_posts` 目录只存放可公开发布的内容。
