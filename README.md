@@ -2,8 +2,8 @@
 
 一个由 GitHub Pages 托管的中文个人博客和学习笔记站点。
 
-- `index.html` 是首页。
-- `blog.html` 是博客文章列表。
+- `index.html` 是博客首页，包含文章列表。
+- `blog.html` 会跳转到博客首页，旧链接仍可使用。
 - `notes.html` 是学习笔记列表。
 - `style.css` 为所有页面提供样式。
 
