@@ -1,0 +1,56 @@
+---
+layout: default
+title: 文章归档
+description: 按分类浏览和搜索游戏开发手记中的公开文章。
+article_list: true
+article_search: true
+---
+<main class="shell page-main archive">
+  <h1>文章归档</h1>
+  <div class="archive-controls" data-archive-controls role="search" aria-label="查找文章" hidden>
+    <label>
+      <span>搜索文章</span>
+      <input type="search" id="archive-search" placeholder="标题、摘要或分类" autocomplete="off">
+    </label>
+    <label>
+      <span>文章分类</span>
+      <select id="archive-category">
+        <option value="">全部分类</option>
+        {% assign archive_categories = site.categories | sort %}
+        {% for category in archive_categories %}
+          <option value="{{ category[0] | escape }}">{{ category[0] | escape }}</option>
+        {% endfor %}
+      </select>
+    </label>
+  </div>
+
+  <noscript>
+    {% if archive_categories.size > 0 %}
+      <details class="archive-category-index">
+        <summary>按分类浏览</summary>
+        {% for category in archive_categories %}
+          <h2>{{ category[0] | escape }}</h2>
+          <ul>
+            {% for post in category[1] %}
+              <li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </details>
+    {% endif %}
+  </noscript>
+
+  <section aria-labelledby="archive-results-title">
+    <div class="article-list-heading">
+      <h2 id="archive-results-title">全部文章</h2>
+      <p class="archive-status" data-archive-status role="status"></p>
+    </div>
+    <div class="archive-results">
+      {% for post in site.posts %}
+        {% include article-card.html post=post searchable=true %}
+      {% else %}
+        <p>还没有公开文章。</p>
+      {% endfor %}
+    </div>
+  </section>
+</main>

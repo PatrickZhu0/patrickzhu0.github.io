@@ -1,0 +1,109 @@
+.post-article .post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: .84rem;
+}
+
+.post-meta a {
+  background: var(--highlight);
+  border-radius: 4px;
+  padding-inline: 8px;
+  text-decoration: none;
+}
+.post-meta a:hover { text-decoration: underline; }
+.post-article .post-cover {
+  width: 100%;
+  max-height: 28rem;
+  margin-bottom: 26px;
+  object-fit: contain;
+  background: var(--surface);
+}
+.post-toc {
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: 8px;
+  margin-bottom: 28px;
+  padding: 14px 20px;
+}
+.post-article .post-toc p {
+  color: var(--ink);
+  font-weight: 700;
+  margin: 0;
+}
+.post-article .post-toc ol {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+}
+.post-toc li { font-size: .94rem; }
+.post-toc .post-toc-subsection { padding-inline-start: 1rem; }
+.post-body :is(h2, h3) { scroll-margin-top: 20px; }
+.post-discussion {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid var(--edge);
+}
+
+.post-code-tools {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1em;
+  padding: 6px 10px;
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  font-size: .82rem;
+}
+.post-copy-status { color: var(--muted); }
+.post-code-tools button {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border: 1px solid var(--edge);
+  border-radius: 4px;
+  color: var(--accent);
+  background: var(--highlight);
+  font: inherit;
+  cursor: pointer;
+}
+.post-code-tools button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.post-body .post-copy-enabled {
+  border-radius: 0 0 8px 8px;
+  margin-top: 0;
+}
+
+/* Rouge token classes are rendered during the GitHub Pages build. */
+.post-body {
+  --syntax-comment: light-dark(#56687b, #aebed1);
+  --syntax-keyword: light-dark(#6a2f91, #d8b0ff);
+  --syntax-string: light-dark(#246b50, #a8e3ad);
+  --syntax-number: light-dark(#8a4409, #ffcb96);
+  --syntax-name: light-dark(#115784, #a4d7ff);
+  --syntax-type: light-dark(#805020, #f7da92);
+  --syntax-error: light-dark(#a33044, #ff9bad);
+}
+[data-theme="classic"] .post-body {
+  --syntax-comment: #b9aaa6;
+  --syntax-keyword: #ffac79;
+  --syntax-string: #bbdfa3;
+  --syntax-number: #edb8f2;
+  --syntax-name: #a9d5ff;
+  --syntax-type: #fad395;
+  --syntax-error: #ff9bad;
+}
+.post-body pre :is(.c, .ch, .cm, .cp, .cpf, .c1, .cs) { color: var(--syntax-comment); }
+.post-body pre :is(.k, .kc, .kd, .kn, .kp, .kr, .ow) { color: var(--syntax-keyword); }
+.post-body pre :is(.s, .sa, .sb, .sc, .sd, .s1, .s2, .se, .sh, .si, .sr, .ss, .sx, .dl, .gi) { color: var(--syntax-string); }
+.post-body pre :is(.m, .mb, .mf, .mh, .mi, .mo, .il) { color: var(--syntax-number); }
+.post-body pre :is(.na, .nb, .bp, .nd, .nf, .fm, .nt, .nv, .vc, .vg, .vi, .vm) { color: var(--syntax-name); }
+.post-body pre :is(.kt, .nc, .nn, .no) { color: var(--syntax-type); }
+.post-body pre :is(.err, .gd) { color: var(--syntax-error); }

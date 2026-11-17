@@ -1,0 +1,25 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title | xml_escape }}</title>
+    <link>{{ '/' | absolute_url | xml_escape }}</link>
+    <description>{{ site.description | xml_escape }}</description>
+    <language>{{ site.lang | xml_escape }}</language>
+    <atom:link href="{{ '/feed.xml' | absolute_url | xml_escape }}" rel="self" type="application/rss+xml" />
+    {% for post in site.posts limit: 20 %}
+    {% assign post_url = post.url | absolute_url | xml_escape %}
+    {% assign excerpt = post.excerpt | strip_html %}
+    {% assign summary = post.description | default: excerpt %}
+    <item>
+      <title>{{ post.title | xml_escape }}</title>
+      <link>{{ post_url }}</link>
+      <guid isPermaLink="true">{{ post_url }}</guid>
+      <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+      <description>{{ summary | normalize_whitespace | xml_escape }}</description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

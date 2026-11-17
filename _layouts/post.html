@@ -2,12 +2,39 @@
 layout: default
 ---
 <main class="shell page-main">
-  <article class="prose">
+  <article class="prose post-article">
     <header class="page-heading">
       <a class="text-link" href="{{ '/' | relative_url }}#articles">← 返回博客</a>
       <h1>{{ page.title | escape }}</h1>
       {% if page.subtitle %}<p>{{ page.subtitle | escape }}</p>{% endif %}
+      <div class="post-meta">
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>
+        {% for category in page.categories %}
+          <a href="{{ '/archive.html' | relative_url }}?category={{ category | url_encode }}">{{ category | escape }}</a>
+        {% endfor %}
+      </div>
     </header>
-    {{ content }}
+    {% if page.image and page.image != empty %}
+      {% assign image_prefix = page.image | slice: 0, 8 %}
+      {% if image_prefix == 'https://' %}
+        {% assign cover_url = page.image %}
+      {% else %}
+        {% assign cover_url = page.image | relative_url %}
+      {% endif %}
+      <img class="post-cover" src="{{ cover_url | escape }}" alt="{{ page.image_alt | default: '' | escape }}" decoding="async">
+    {% endif %}
+    <nav class="post-toc" aria-labelledby="post-toc-title" hidden>
+      <p id="post-toc-title">目录</p>
+      <ol></ol>
+    </nav>
+    <div class="post-body">
+      {{ content }}
+    </div>
+    {% assign discussion_url = page.discussion_url | default: site.comments_url %}
+    {% if discussion_url and discussion_url != empty %}
+      <footer class="post-discussion">
+        <a class="text-link" href="{{ discussion_url | escape }}">在 GitHub 参与讨论 <span aria-hidden="true">↗</span></a>
+      </footer>
+    {% endif %}
   </article>
 </main>

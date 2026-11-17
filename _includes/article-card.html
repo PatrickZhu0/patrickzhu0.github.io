@@ -1,0 +1,25 @@
+{% assign card_post = include.post %}
+{% assign card_summary = card_post.description | default: card_post.excerpt | strip_html | strip %}
+<article class="entry-card"{% if include.searchable %} data-archive-entry data-title="{{ card_post.title | escape }}" data-summary="{{ card_summary | escape }}" data-categories="{{ card_post.categories | jsonify | escape }}"{% endif %}>
+  <a href="{{ card_post.url | relative_url }}" class="entry-link">
+    {% if card_post.image and card_post.image != empty %}
+      {% assign image_prefix = card_post.image | slice: 0, 8 %}
+      <div class="entry-art entry-cover">
+        <img src="{% if image_prefix == 'https://' %}{{ card_post.image | escape }}{% else %}{{ card_post.image | relative_url | escape }}{% endif %}" alt="{{ card_post.image_alt | escape }}" loading="lazy" decoding="async">
+      </div>
+    {% else %}
+      <div class="entry-art" aria-hidden="true"><span>&gt;_</span></div>
+    {% endif %}
+    <div class="entry-content">
+      <div class="entry-meta">
+        {% if card_post.categories.size > 0 %}
+          <span class="entry-tag">{{ card_post.categories | join: ' · ' | escape }}</span>
+        {% endif %}
+        <time datetime="{{ card_post.date | date_to_xmlschema }}">{{ card_post.date | date: '%Y年%m月%d日' }}</time>
+      </div>
+      <h3>{{ card_post.title | escape }}</h3>
+      {% if card_summary != empty %}<p>{{ card_summary | truncate: 120 | escape }}</p>{% endif %}
+    </div>
+    <span class="entry-arrow" aria-hidden="true">↗</span>
+  </a>
+</article>

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 博客
+article_list: true
 ---
   <main>
     <section class="hero">
@@ -13,21 +14,12 @@ title: 博客
     </section>
 
     <section class="shell articles" id="articles" aria-labelledby="articles-title">
-      <h2 id="articles-title">最新文章</h2>
+      <div class="article-list-heading">
+        <h2 id="articles-title">最新文章</h2>
+        <a href="{{ '/archive.html' | relative_url }}">查看全部文章 <span aria-hidden="true">↗</span></a>
+      </div>
       {% for post in site.posts %}
-      <article class="entry-card">
-        <a href="{{ post.url | relative_url }}" class="entry-link">
-          <div class="entry-art" aria-hidden="true"><span>&gt;_</span></div>
-          <div class="entry-content">
-            {% assign category = post.categories | first %}
-            {% if category %}<span class="entry-tag">{{ category | escape }}</span>{% endif %}
-            <h3>{{ post.title | escape }}</h3>
-            {% assign summary = post.description | default: post.excerpt %}
-            {% if summary %}<p>{{ summary | strip_html | truncate: 120 | escape }}</p>{% endif %}
-          </div>
-          <span class="entry-arrow" aria-hidden="true">↗</span>
-        </a>
-      </article>
+        {% include article-card.html post=post %}
       {% endfor %}
     </section>
   </main>

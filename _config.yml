@@ -1,8 +1,11 @@
 title: 学习手记
 description: Patrick 的游戏开发博客，记录技术实践与项目复盘。
 lang: zh-CN
+url: https://patrickzhu0.github.io
 timezone: Asia/Shanghai
 permalink: /posts/:year/:month/:day/:title/
+comments_url: https://github.com/PatrickZhu0/patrickzhu0.github.io/discussions
+cloudflare_web_analytics_token: ""
 defaults:
   - scope:
       path: ""

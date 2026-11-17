@@ -7,7 +7,18 @@
   <title>{{ page.title | escape }} · {{ site.title | escape }}</title>
   <meta name="color-scheme" content="light dark">
   <script src="{{ '/theme.js' | relative_url }}?v=classic"></script>
-  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}?v=classic">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}?v=archive">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
+  {% if page.layout == 'post' %}
+    <link rel="stylesheet" href="{{ '/article.css' | relative_url }}?v=article-tools">
+    <script defer src="{{ '/article.js' | relative_url }}?v=article-tools"></script>
+  {% endif %}
+  {% if page.article_list %}
+    <link rel="stylesheet" href="{{ '/archive.css' | relative_url }}">
+  {% endif %}
+  {% if page.article_search %}
+    <script defer src="{{ '/archive.js' | relative_url }}"></script>
+  {% endif %}
 </head>
 <body>
   <header class="site-header">
@@ -15,6 +26,7 @@
       <a class="brand" href="{{ '/' | relative_url }}"><span class="brand-mark" aria-hidden="true">P</span> {{ site.title | escape }}</a>
       <nav class="site-nav" aria-label="主导航">
         <a href="{{ '/' | relative_url }}#articles">文章</a>
+        <a href="{{ '/archive.html' | relative_url }}" aria-label="文章归档与搜索"{% if page.article_search %} aria-current="page"{% endif %}>归档</a>
         <select id="site-theme" aria-label="网页皮肤" hidden>
           <option value="system">跟随系统</option>
           <option value="light">浅色</option>
@@ -28,7 +40,16 @@
   {{ content }}
 
   <footer class="site-footer">
-    <div class="shell"><span>{{ site.title | escape }}</span><a href="https://github.com/PatrickZhu0">GitHub <span aria-hidden="true">↗</span></a></div>
+    <div class="shell">
+      <span>{{ site.title | escape }}</span>
+      <div class="footer-links">
+        <a href="{{ '/feed.xml' | relative_url }}">RSS 订阅</a>
+        <a href="https://github.com/PatrickZhu0">GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
   </footer>
+  {% if site.cloudflare_web_analytics_token and site.cloudflare_web_analytics_token != empty %}
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;:{{ site.cloudflare_web_analytics_token | jsonify | escape }}}"></script>
+  {% endif %}
 </body>
 </html>
