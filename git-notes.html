@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Git 状态检查、暂存、提交和推送的命令及用法。">
+  <title>Git 常用命令速查 · 学习手记</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <a class="brand" href="index.html"><span aria-hidden="true">✳</span> 学习手记</a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="blog.html">博客</a>
+        <a href="notes.html" aria-current="page">学习笔记</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-main">
+    <article class="prose">
+      <header class="page-heading">
+        <a class="text-link" href="notes.html">← 返回学习笔记</a>
+        <h1>Git 常用命令速查</h1>
+        <p>在已有的 Git 仓库里，检查改动、提交并推送一篇文章。</p>
+      </header>
+
+      <h2>1. 查看改动</h2>
+      <p>打开终端并进入仓库目录。<code>git status</code> 显示分支和改动状态。<code>git diff</code> 显示 Git 已跟踪文件中尚未暂存的改动。首次创建的文件会出现在状态列表里。</p>
+      <pre><code>git status
+git diff</code></pre>
+
+      <h2>2. 暂存并提交</h2>
+      <p>把示例里的 <code>first-post.html</code> 换成本次要提交的文件名。提交前用 <code>git diff --staged</code> 核对本次提交的内容，也能看到刚暂存的新文件。</p>
+      <pre><code>git add first-post.html
+git diff --staged
+git commit -m "添加第一篇文章"</code></pre>
+
+      <h2>3. 推送并查看记录</h2>
+      <p>如果当前分支已关联远端分支，运行 <code>git push</code> 即可。首次推送时，可以用下面的命令建立关联，将 <code>main</code> 换成当前分支名，将 <code>origin</code> 换成实际的远端名称。</p>
+      <pre><code>git push -u origin main
+git log --oneline -5</code></pre>
+      <p><code>git log</code> 在这里显示最近五条本地提交。如果仓库启用了 GitHub Pages，推送后可在 GitHub 仓库的 Actions 页面查看部署状态。</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">学习手记</div>
+  </footer>
+</body>
+</html>

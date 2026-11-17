@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="用三行记录留下学习中的问题、尝试和结果。">
+  <title>为什么开始写学习手记 · 学习手记</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <a class="brand" href="index.html"><span aria-hidden="true">✳</span> 学习手记</a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="blog.html" aria-current="page">博客</a>
+        <a href="notes.html">学习笔记</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-main">
+    <article class="prose">
+      <header class="page-heading">
+        <a class="text-link" href="blog.html">← 返回博客</a>
+        <h1>为什么开始写学习手记</h1>
+        <p>试过的办法、当时的判断，以及下次还能怎么做。</p>
+      </header>
+
+      <p>练习时，我常常能在当天解决问题，过几周却想不起当时试了哪几步。比如一段读取文件的代码能在编辑器里运行，换到终端就找不到文件。把报错、运行目录和实际用过的命令放在一起，下次就有线索可查。</p>
+
+      <h2>先写三行</h2>
+      <ol>
+        <li><strong>问题</strong>。从终端运行脚本时，同一个相对路径为什么找不到文件？</li>
+        <li><strong>尝试</strong>。打印当前工作目录，再分别从项目目录和它的上级目录启动脚本。</li>
+        <li><strong>结果</strong>。相对路径从当前工作目录开始解析。需要定位脚本旁边的文件时，可以先取脚本所在的目录。</li>
+      </ol>
+      <p>这三行足以让我复现当时的现象。等有新的例子，再补一段最小代码，把它整理成一篇可供查阅的笔记。</p>
+
+      <h2>给下次练习留个入口</h2>
+      <p>一篇笔记末尾可以留一道小题。例如把同一个脚本放进带空格的目录，再试两种运行方式。第二天先用旧笔记复现一遍，再继续做那道题。</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">学习手记</div>
+  </footer>
+</body>
+</html>

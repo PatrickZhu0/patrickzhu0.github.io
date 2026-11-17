@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="四周 Python 学习安排，最终做出命令行记账工具。">
+  <title>四周 Python 入门计划 · 学习手记</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <a class="brand" href="index.html"><span aria-hidden="true">✳</span> 学习手记</a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="blog.html">博客</a>
+        <a href="notes.html" aria-current="page">学习笔记</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-main">
+    <article class="prose">
+      <header class="page-heading">
+        <a class="text-link" href="notes.html">← 返回学习笔记</a>
+        <h1>四周 Python 入门计划</h1>
+        <p>从几行代码开始，做一个能添加、查询和汇总记录的命令行记账工具。</p>
+      </header>
+
+      <h2>第一周 · 输入和计算</h2>
+      <p>练习变量、输入、条件和循环。写一个程序读取三笔支出并打印总额。先把金额存成整数分，例如 12 元存为 1200 分。</p>
+      <p><strong>完成标准</strong>。输入三笔已知金额，手算结果与程序输出一致。</p>
+
+      <h2>第二周 · 处理一组记录</h2>
+      <p>每笔支出用一个字典保存，包含金额和类别。用列表保存多笔支出，再写两个函数分别计算总额和按类别汇总。</p>
+      <p><strong>完成标准</strong>。使用含重复类别的示例数据验证分类汇总，再用空列表验证总额为零。</p>
+
+      <h2>第三周 · 保存到文件</h2>
+      <p>用 Python 标准库的 <code>csv</code> 模块把记录写进文件。程序启动时先尝试读取已有记录，新增支出后再保存。</p>
+      <p><strong>完成标准</strong>。录入两笔支出，退出再打开程序，两笔记录仍然可查询。</p>
+
+      <h2>第四周 · 整理使用流程</h2>
+      <p>提供添加、查看和汇总三个操作。遇到空类别或非数字金额时，提示重新输入。写一份简短说明，记录启动命令和使用示例。</p>
+      <p><strong>完成标准</strong>。按说明从空目录启动，添加记录，检查总额，再用一次无效输入确认程序能继续运行。</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">学习手记</div>
+  </footer>
+</body>
+</html>
