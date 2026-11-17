@@ -1,12 +1,13 @@
 (() => {
   const storageKey = "devlog-theme";
+  const namedThemes = ["light", "dark", "classic"];
   const root = document.documentElement;
   let preference = "system";
 
   function readPreference() {
     try {
       const saved = localStorage.getItem(storageKey);
-      return saved === "light" || saved === "dark" ? saved : "system";
+      return namedThemes.includes(saved) ? saved : "system";
     } catch {
       return preference;
     }
